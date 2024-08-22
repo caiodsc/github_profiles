@@ -5,17 +5,31 @@
 
   <% content_for :title, "Users" %>
 
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center mb-4">
     <h1 class="font-bold text-4xl">Users</h1>
     <%= link_to "New user", new_user_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="users" class="min-w-full">
-    <% @users.each do |user| %>
-      <%= render user %>
-      <p>
-        <%= link_to "Show this user", user, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
-    <% end %>
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+      <thead class="bg-gray-100 border-b border-gray-200">
+      <tr>
+        <th class="py-2 px-4 text-left text-gray-600">Name</th>
+        <th class="py-2 px-4 text-left text-gray-600">GitHub Address</th>
+        <th class="py-2 px-4 text-left text-gray-600">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr class="border-b border-gray-200">
+          <td class="py-2 px-4 text-gray-800"><%= user.name %></td>
+          <td class="py-2 px-4 text-gray-800"><%= user.github_address %></td>
+          <td class="py-2 px-4">
+            <%= link_to "Show", user, class: "text-blue-600 hover:text-blue-800" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
