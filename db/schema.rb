@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_20_224108) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "github_address"
+    t.string "github_url"
     t.string "github_name"
     t.integer "followers"
     t.integer "following"

@@ -17,7 +17,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference("User.count") do
-      post users_url, params: { user: { contributions_last_year: @user.contributions_last_year, followers: @user.followers, following: @user.following, github_address: @user.github_address, github_name: @user.github_name, name: @user.name, profile_image_url: @user.profile_image_url, stars: @user.stars } }
+      post users_url, params: { user: { contributions_last_year: @user.contributions_last_year, followers: @user.followers, following: @user.following, github_url: @user.github_url, github_name: @user.github_name, name: @user.name, profile_image_url: @user.profile_image_url, stars: @user.stars } }
     end
 
     assert_redirected_to user_url(User.last)
@@ -34,7 +34,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { contributions_last_year: @user.contributions_last_year, followers: @user.followers, following: @user.following, github_address: @user.github_address, github_name: @user.github_name, name: @user.name, profile_image_url: @user.profile_image_url, stars: @user.stars } }
+    patch user_url(@user), params: { user: { contributions_last_year: @user.contributions_last_year, followers: @user.followers, following: @user.following, github_url: @user.github_url, github_name: @user.github_name, name: @user.name, profile_image_url: @user.profile_image_url, stars: @user.stars } }
     assert_redirected_to user_url(@user)
   end
 

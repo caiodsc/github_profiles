@@ -15,7 +15,7 @@
       <thead class="bg-gray-100 border-b border-gray-200">
       <tr>
         <th class="py-2 px-4 text-left text-gray-600">Name</th>
-        <th class="py-2 px-4 text-left text-gray-600">GitHub Address</th>
+        <th class="py-2 px-4 text-left text-gray-600">GitHub URL</th>
         <th class="py-2 px-4 text-left text-gray-600">Actions</th>
       </tr>
       </thead>
@@ -23,7 +23,7 @@
       <% @users.each do |user| %>
         <tr class="border-b border-gray-200">
           <td class="py-2 px-4 text-gray-800"><%= user.name %></td>
-          <td class="py-2 px-4 text-gray-800"><%= user.github_address %></td>
+          <td class="py-2 px-4 text-gray-800"><%= user.github_url %></td>
           <td class="py-2 px-4">
             <%= link_to "Show", user, class: "text-blue-600 hover:text-blue-800" %>
           </td>

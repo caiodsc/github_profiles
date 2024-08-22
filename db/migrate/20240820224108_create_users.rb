@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration[7.1]
   def change
     create_table :users do |t|
       t.string :name
-      t.string :github_address
+      t.string :github_url
       t.string :github_name
       t.integer :followers
       t.integer :following

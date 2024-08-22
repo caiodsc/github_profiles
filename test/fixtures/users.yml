@@ -2,7 +2,7 @@
 
 one:
   name: MyString
-  github_address: MyString
+  github_url: MyString
   github_name: MyString
   followers: 1
   following: 1
@@ -12,7 +12,7 @@ one:
 
 two:
   name: MyString
-  github_address: MyString
+  github_url: MyString
   github_name: MyString
   followers: 1
   following: 1
