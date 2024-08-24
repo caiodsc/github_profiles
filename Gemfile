@@ -72,4 +72,4 @@ group :test do
 end
 
 gem 'rubocop', '~> 1.65'
-gem 'state_machines', '~> 0.6.0'
+gem 'state_machines-activerecord', '~> 0.9.0'
