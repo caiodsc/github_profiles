@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy reprocess]
 
   # GET /users or /users.json
   def index
@@ -54,6 +54,15 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def reprocess
+    @user.reprocess!
+
+    respond_to do |format|
+      format.html { redirect_to user_url(@user), notice: 'Reprocessing user.' }
+      format.json { head :ok }
     end
   end
 
