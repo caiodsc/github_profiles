@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates_presence_of :name, :github_url
   validates_uniqueness_of :github_url
 
-  after_create :start_processing, :enqueue_processing_job
+  after_create :start_processing!
 
   PENDING_STATE = :pending
   PROCESSING_STATE = :processing
@@ -20,6 +20,12 @@ class User < ApplicationRecord
     event :start_processing do
       transition pending: :processing
     end
+
+    event :reprocess do
+      transition all - [:pending] => :processing
+    end
+
+    after_transition to: :processing, do: :enqueue_processing_job
   end
 
   def enqueue_processing_job
