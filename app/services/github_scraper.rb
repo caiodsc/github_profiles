@@ -5,6 +5,7 @@ require 'open-uri'
 
 class GithubScraper
   USERNAME_REGEXP = /[\w-]+$/
+  CONTRIBUTIONS_REGEXP = /[\d,]+/
 
   def initialize(github_url)
     @github_url = github_url
@@ -37,19 +38,19 @@ class GithubScraper
   end
 
   def followers
-    @document.at_css('a[href$="followers"] span').text.strip.to_i
+    @document.at_css('a[href$="followers"] span').text.strip
   end
 
   def following
-    @document.at_css('a[href$="following"] span').text.strip.to_i
+    @document.at_css('a[href$="following"] span').text.strip
   end
 
   def stars
-    @document.at_css('a[href$="stars"] span').text.strip.to_i
+    @document.at_css('a[href$="stars"] span').text.strip
   end
 
   def contributions_last_year
-    @contributions_document.at_css('h2').text.strip.to_i
+    @contributions_document.at_css('h2').text[CONTRIBUTIONS_REGEXP].tr(',', '.')
   end
 
   def profile_image_url
