@@ -22,7 +22,9 @@ class GithubScraper
       following:,
       stars:,
       contributions_last_year:,
-      profile_image_url:
+      profile_image_url:,
+      location:,
+      organization:
     }
   end
 
@@ -38,11 +40,11 @@ class GithubScraper
   end
 
   def followers
-    @document.at_css('a[href$="followers"] span').text.strip
+    @document.at_css('a[href$="followers"] span')&.text&.strip || '0'
   end
 
   def following
-    @document.at_css('a[href$="following"] span').text.strip
+    @document.at_css('a[href$="following"] span')&.text&.strip || '0'
   end
 
   def stars
@@ -55,5 +57,13 @@ class GithubScraper
 
   def profile_image_url
     @document.at_css('img.avatar')['src']
+  end
+
+  def location
+    @document.at_css('li[itemprop="homeLocation"] .p-label')&.text&.strip
+  end
+
+  def organization
+    @document.at_css('li[itemprop="worksFor"] .p-org div')&.text&.strip
   end
 end
