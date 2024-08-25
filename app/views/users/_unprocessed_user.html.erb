@@ -1,0 +1,13 @@
+<div id="<%= dom_id @user %>" class="max-w-md mb-5 mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+  <div class="relative">
+    <div class="h-16 bg-gray-600"></div>
+  </div>
+
+  <div class="text-center mb-6 mt-4 px-6">
+    <h2 class="text-xl font-bold text-gray-900"><%= @user.name %></h2>
+    <p class="text-gray-600 text-sm">@<%= @user.github_url[GithubScraper::USERNAME_REGEXP] %></p>
+    <p class="text-blue-500 text-sm">
+      <a href="<%= @user.github_url %>" target="_blank" class="hover:underline"><%= @user.github_url %></a>
+    </p>
+  </div>
+</div>
