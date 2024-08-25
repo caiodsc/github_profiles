@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_240_824_203_142) do
+ActiveRecord::Schema[7.1].define(version: 20_240_825_193_956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -20,10 +20,10 @@ ActiveRecord::Schema[7.1].define(version: 20_240_824_203_142) do
     t.string 'name'
     t.string 'github_url'
     t.string 'github_name'
-    t.integer 'followers'
-    t.integer 'following'
-    t.integer 'stars'
-    t.integer 'contributions_last_year'
+    t.string 'followers'
+    t.string 'following'
+    t.string 'stars'
+    t.string 'contributions_last_year'
     t.string 'profile_image_url'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
