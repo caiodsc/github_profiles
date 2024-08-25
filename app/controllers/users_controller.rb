@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     @user.reprocess!
 
     respond_to do |format|
-      format.html { redirect_to user_url(@user), notice: 'Reprocessing user.' }
+      format.html { redirect_to users_url, notice: 'Reprocessing in progress, check back shortly for updated details.' }
       format.json { head :ok }
     end
   end
