@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.1].define(version: 20_240_824_203_142) do
     t.string 'profile_image_url'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.string 'state'
+    t.string 'state', default: 'pending'
     t.index ['github_url'], name: 'index_users_on_github_url', unique: true
   end
 end
