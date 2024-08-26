@@ -55,6 +55,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'rubocop', '~> 1.65'
+  gem 'shoulda-matchers', '~> 6.4'
 end
 
 group :development do
@@ -75,5 +77,4 @@ group :test do
 end
 
 gem 'http', '~> 5.2'
-gem 'rubocop', '~> 1.65'
 gem 'state_machines-activerecord', '~> 0.9.0'
