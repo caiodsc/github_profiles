@@ -10,7 +10,7 @@ class ShortLinksController < ApplicationController
   private
 
   def set_user
-    @user = User.find_by(unique_identifier:)
+    @user = User.find_by!(unique_identifier:)
   end
 
   def unique_identifier
