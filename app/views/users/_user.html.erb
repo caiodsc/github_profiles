@@ -10,7 +10,7 @@
   <div class="text-center mb-4 mt-16 px-6">
     <h2 class="text-xl font-bold text-gray-900"><%= user.name %></h2>
     <p class="text-gray-600 text-sm">@<%= user.github_name %></p>
-    <p class="text-blue-500 text-sm"><a href="<%= user.github_url %>" target="_blank" class="hover:underline"><%= user.github_url %></a></p>
+    <p class="text-blue-500 text-sm"><a href="<%= shortened_github_url(user) %>" target="_blank" class="hover:underline"><%= shortened_github_url(user) %></a></p>
   </div>
 
   <div class="flex justify-around px-6 py-4 border-t border-gray-200">

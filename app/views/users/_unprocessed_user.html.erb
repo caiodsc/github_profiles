@@ -7,7 +7,7 @@
     <h2 class="text-xl font-bold text-gray-900"><%= @user.name %></h2>
     <p class="text-gray-600 text-sm">@<%= @user.github_url[GithubScraper::USERNAME_REGEXP] %></p>
     <p class="text-blue-500 text-sm">
-      <a href="<%= @user.github_url %>" target="_blank" class="hover:underline"><%= @user.github_url %></a>
+      <a href="<%= shortened_github_url(@user) %>" target="_blank" class="hover:underline"><%= shortened_github_url(@user) %></a>
     </p>
   </div>
 </div>
