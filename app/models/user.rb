@@ -1,15 +1,21 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  PENDING_STATE = :pending
+  PROCESSING_STATE = :processing
+  COMPLETED_STATE = :completed
+  FAILED_STATE = :failed
+  SEARCH_COLUMNS = %w[name github_name location organization].freeze
+
   validates_presence_of :name, :github_url
   validates_uniqueness_of :github_url
 
   after_create :start_processing!
 
-  PENDING_STATE = :pending
-  PROCESSING_STATE = :processing
-  COMPLETED_STATE = :completed
-  FAILED_STATE = :failed
+  scope :search_by_term, lambda { |term|
+    query = SEARCH_COLUMNS.map { |column| "#{column} ILIKE :term" }.join(' OR ')
+    where(query, term: "%#{term}%")
+  }
 
   state_machine :state, initial: :pending do
     state PENDING_STATE

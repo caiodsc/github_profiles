@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = fetch_users(params[:query])
   end
 
   # GET /users/1 or /users/1.json
@@ -75,7 +75,12 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:name, :github_url, :github_name, :followers, :following, :stars,
-                                 :contributions_last_year, :profile_image_url)
+    params.require(:user).permit(:name, :github_url)
+  end
+
+  def fetch_users(term)
+    return User.all unless term.present?
+
+    User.search_by_term(term)
   end
 end
