@@ -25,5 +25,8 @@ module GithubProfiles
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Secure github_url:
+    config.filter_parameters += [:github_url]
   end
 end
