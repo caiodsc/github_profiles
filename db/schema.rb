@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_240_825_204_533) do
+ActiveRecord::Schema[7.1].define(version: 20_240_826_160_501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.1].define(version: 20_240_825_204_533) do
     t.string 'state', default: 'pending'
     t.string 'location'
     t.string 'organization'
+    t.virtual 'unique_identifier', type: :bigint, as: "((('1'::text || lpad(((id)::character varying)::text, 5, '0'::text)) || '0'::text))::bigint", stored: true
     t.index ['github_url'], name: 'index_users_on_github_url', unique: true
+    t.index ['unique_identifier'], name: 'index_users_on_unique_identifier', unique: true
   end
 end
