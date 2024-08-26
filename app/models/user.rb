@@ -7,8 +7,8 @@ class User < ApplicationRecord
   FAILED_STATE = :failed
   SEARCH_COLUMNS = %w[name github_name location organization].freeze
 
-  validates_presence_of :name, :github_url
-  validates_uniqueness_of :github_url
+  validates :name, presence: true, length: { maximum: 25 }
+  validates :github_url, presence: true, length: { maximum: 50 }, uniqueness: true
 
   after_create :start_processing!
 
