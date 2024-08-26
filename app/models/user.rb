@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates_presence_of :name, :github_url
   validates_uniqueness_of :github_url
 
+  before_create :set_short_github_url
   after_create :start_processing!
 
   scope :search_by_term, lambda { |term|
@@ -33,6 +34,15 @@ class User < ApplicationRecord
 
     after_transition to: :processing, do: :enqueue_processing_job
   end
+
+  def set_short_github_url
+    loop do
+      self.short_github_url = SecureRandom.uuid[0..5]
+      break unless User.exists?(short_github_url:)
+    end
+  end
+
+  private
 
   def enqueue_processing_job
     GithubScraperJob.perform_later(id)
