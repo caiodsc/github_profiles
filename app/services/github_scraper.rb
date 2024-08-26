@@ -31,7 +31,7 @@ class GithubScraper
   private
 
   def fetch_page(url)
-    html = URI.open(url).read
+    html = HTTP.get(url).to_s
     Nokogiri::HTML(html)
   end
 
