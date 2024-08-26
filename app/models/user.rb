@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 25 }
   validates :github_url, presence: true, length: { maximum: 50 }, uniqueness: true
+  encrypts :github_url, deterministic: true, downcase: true
 
   after_create :start_processing!
 
