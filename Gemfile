@@ -71,5 +71,6 @@ group :test do
   gem 'selenium-webdriver'
 end
 
+gem 'http', '~> 5.2'
 gem 'rubocop', '~> 1.65'
 gem 'state_machines-activerecord', '~> 0.9.0'
