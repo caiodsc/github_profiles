@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  attr_accessor :skip_callbacks
+
   include UserConstants
 
   validates :name, presence: true, length: { maximum: 25 }
-  validates :github_url, presence: true, length: { maximum: 50 }, uniqueness: true
+  validates :github_url, presence: true, length: { maximum: 50 }, format: { with: %r{https://github\.com/[\w-]+} }, uniqueness: { case_sensitive: true }
+
   encrypts :github_url, deterministic: true, downcase: true
 
-  after_create :start_processing!
+  after_create :start_processing!, unless: :skip_callbacks
 
   scope :search_by_term, lambda { |term|
     query = SEARCH_COLUMNS.map { |column| "#{column} ILIKE :term" }.join(' OR ')

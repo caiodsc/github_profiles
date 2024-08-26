@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :user do
     name { Faker::Name.first_name }
-    github_url { Faker::Internet.url(host: 'github.com', path: "/#{Faker::Internet.username(specifier: 6, separators: %w[_ -])}") }
+    github_url { Faker::Internet.url(scheme: 'https', host: 'github.com', path: "/#{Faker::Internet.username(specifier: 6, separators: %w[_ -])}") }
 
     trait :with_github_details do
       github_name { Faker::Internet.username }
