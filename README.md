@@ -78,4 +78,4 @@ Run the server with the following command:
 bin/dev
 ```
 
-Once the server is running, access the site at localhost:3000.
+Once the server is running, access the site at [localhost:3000](http://localhost:3000).
