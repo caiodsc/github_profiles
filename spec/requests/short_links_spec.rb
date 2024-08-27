@@ -6,7 +6,7 @@ RSpec.describe 'ShortLinks', type: :request do
   alias_method :any_url, :anything
 
   describe 'GET #show' do
-    subject(:make_request) { get("/s/#{short_id}") }
+    subject(:make_request) { get short_link_path(short_id) }
 
     let(:short_id) { ShortCode.encode(user.unique_identifier) }
     let(:user) { create(:user) }
@@ -24,7 +24,7 @@ RSpec.describe 'ShortLinks', type: :request do
     end
 
     context 'non existent short code' do
-      subject(:make_request) { get('/s/nonexistent') }
+      subject(:make_request) { get short_link_path('nonexistent') }
 
       it 'returns a 404 status code' do
         make_request
