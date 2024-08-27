@@ -110,7 +110,10 @@ Once the server is running, access the site at [localhost:3000](http://localhost
 
 ## URL Shortening
 
-I implemented a secure URL shortening solution where the GitHub URL is stored in the database using PostgreSQL's encryption feature. PostgreSQL's encrypt feature allows sensitive data, like URLs, to be securely stored in the database by encrypting it, which adds a layer of protection against unauthorized access. This ensures that even if the database is compromised, the actual URLs remain hidden and secure.
+I implemented a secure URL shortening solution where the GitHub URL is stored in the database using [ActiveRecord's encryption](https://guides.rubyonrails.org/active_record_encryption.html) feature. ActiveRecord's encryption feature allows sensitive data, like URLs, to be securely stored in the database by encrypting it, which adds a layer of protection against unauthorized access. This ensures that even if the database is compromised, the actual URLs remain hidden and secure.
+
+![Captura de tela de 2024-08-26 23-41-48](https://github.com/user-attachments/assets/bdb0daac-51d0-4c94-af44-4e944c19c471)
+
 
 To manage the shortened URLs, I created a ShortCode module. The approach involves generating a unique identifier for each user that differs from the standard id field in the database. This unique identifier is created using a stored generated column in PostgreSQL:
 
