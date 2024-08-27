@@ -1,24 +1,81 @@
-# README
+# Github Profiles
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![CI](https://github.com/caiodsc/github_profiles/actions/workflows/main.yml/badge.svg)
+![Coverage Badge](https://img.shields.io/badge/Coverage-100%25-brightgreen)
 
-Things you may want to cover:
+Github Profiles Challenge.
 
-* Ruby version
+# Configuration
 
-* System dependencies
+## Prerequisites
 
-* Configuration
+1. [Git](https://git-scm.com/)
+2. [asdf](https://asdf-vm.com/) (version manager)
 
-* Database creation
+## Project Setup
 
-* Database initialization
+**1. Clone the Repository**
 
-* How to run the test suite
+```bash
+git clone https://github.com/caiodsc/github_profiles.git
+cd github_profiles
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+**2. Install Ruby with asdf**
 
-* Deployment instructions
+```bash
+asdf install
+```
 
-* ...
+**3. Install Dependencies**
+
+```bash
+gem install bundler
+bundle install
+```
+
+**4. Configure PostgreSQL**
+
+Edit the `config/database.yml` file.
+
+Replace the `database_username`, `database_password` and `host` with your actual PostgreSQL credentials.
+
+**5. Create the Database**
+
+```bash
+rails db:create
+```
+
+**6. Run Migrations**
+
+```bash
+rails db:migrate
+```
+
+# Quick Start
+
+## Running Tests
+
+Execute the test suite with RSpec:
+
+```bash
+rspec
+```
+
+## Running RuboCop
+
+Run RuboCop to check for code quality and style issues:
+
+```bash
+rubocop
+```
+
+## Running the Server
+
+Run the server with the following command:
+
+```bash
+bin/dev
+```
+
+Once the server is running, access the site at localhost:3000.
