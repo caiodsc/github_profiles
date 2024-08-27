@@ -115,7 +115,7 @@ I implemented a secure URL shortening solution where the GitHub URL is stored in
 ![Captura de tela de 2024-08-26 23-41-48](https://github.com/user-attachments/assets/bdb0daac-51d0-4c94-af44-4e944c19c471)
 
 
-To manage the shortened URLs, I created a ShortCode module. The approach involves generating a unique identifier for each user that differs from the standard id field in the database. This unique identifier is created using a stored generated column in PostgreSQL:
+To manage the shortened URLs, I created a module named `ShortCode`. The approach involves generating a unique identifier for each user that differs from the standard id field in the database. This unique identifier is created using a stored generated column in PostgreSQL:
 
 ```ruby
 add_column :users, :unique_identifier, :bigint, as: "('1' || LPAD(id::varchar, 5, '0') || '0')::bigint", stored: true
