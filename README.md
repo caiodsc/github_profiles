@@ -125,6 +125,14 @@ This unique identifier is then encoded using the `ShortCode` module, which conve
 
 This approach not only ensures the security of the original URLs but also provides a user-friendly way to share links with a shorter and more manageable format. The use of unique identifiers and encoding adds an additional layer of abstraction, making the system both secure and efficient.
 
+## Search Implementation with Scope
+
+The search functionality is implemented using a `scope` in the `User` model, allowing for searches based on a user-provided term. The `SEARCH_COLUMNS` constant lists the columns to be searched, such as `name`, `github_name`, `location`, and `organization`, making it easy to update the searchable fields.
+
+The scope creates a dynamic query that performs a case-insensitive search across these columns using `ILIKE`. This query is then used with ActiveRecord’s `where` clause to efficiently find matching records in the database.
+
+A **potential enhancement** is to integrate Elasticsearch for indexing keywords. Elasticsearch could provide more advanced search capabilities, such as assigning weights to different columns to improve search relevance and performance.
+
 ## Future Enhancements
 
 ### Adding Authentication Layer with Devise
