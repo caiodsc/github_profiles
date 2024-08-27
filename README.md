@@ -46,10 +46,10 @@ Replace the `POSTGRES_USER`, `POSTGRES_PASSWORD` and the `DB_HOST` with your act
 rails db:create
 ```
 
-**6. Run Migrations**
+**6. Load the Schema**
 
 ```bash
-rails db:migrate
+rails db:schema:load
 ```
 
 # Quick Start
