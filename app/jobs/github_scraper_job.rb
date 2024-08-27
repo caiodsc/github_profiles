@@ -10,7 +10,7 @@ class GithubScraperJob < ApplicationJob
   end
 
   def user_info
-    GithubScraper.new(@user.github_url).user_info.merge!(state: User::COMPLETED_STATE)
+    GithubScraper.new(@user.github_url).user_info.merge(state: User::COMPLETED_STATE)
   rescue StandardError
     { state: User::FAILED_STATE }
   end
