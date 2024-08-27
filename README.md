@@ -131,7 +131,7 @@ The search functionality is implemented using a `scope` in the `User` model, all
 
 The scope creates a dynamic query that performs a case-insensitive search across these columns using `ILIKE`. This query is then used with ActiveRecord’s `where` clause to efficiently find matching records in the database.
 
-A **potential enhancement** is to integrate Elasticsearch for indexing keywords. Elasticsearch could provide more advanced search capabilities, such as assigning weights to different columns to improve search relevance and performance.
+A **potential enhancement** is to integrate [Elasticsearch](https://github.com/elastic/elasticsearch-rails) for indexing keywords. Elasticsearch could provide more advanced search capabilities, such as assigning weights to different columns to improve search relevance and performance.
 
 ## Future Enhancements
 
