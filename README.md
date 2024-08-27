@@ -96,17 +96,19 @@ bin/dev
 
 Once the server is running, access the site at [localhost:3000](http://localhost:3000).
 
-# Key Technologies Used:
+# Technical Details
 
-- Tailwind CSS - I utilized Tailwind CSS for the project's styling, as it offers a quick and efficient way to create modern and responsive layouts.
+## Key Technologies Used:
 
-- Stimulus - I created a Stimulus controller to manage the CSS classes for the different processing states, such as processing, processed, etc. I believe this is a better solution than using decorators, as Stimulus is built into Rails and integrates seamlessly with the framework. A potential improvement here would be to have the controller manage all states at once, rather than having a separate controller for each state.
+- **Tailwind CSS** - I utilized Tailwind CSS for the project's styling, as it offers a quick and efficient way to create modern and responsive layouts.
 
-- Active Job - I used Active Job to handle the asynchronous scraping of profiles. One improvement would be to integrate Sidekiq and Redis, which would provide a more robust solution with features like retries and better job management. Sidekiq is more robust because it offers enhanced performance, better concurrency handling, and a built-in retry mechanism, making it ideal for production environments where reliability and efficiency are critical.
+- **Stimulus** - I created a Stimulus controller to manage the CSS classes for the different processing states, such as processing, processed, etc. I believe this is a better solution than using decorators, as Stimulus is built into Rails and integrates seamlessly with the framework. A potential improvement here would be to have the controller manage all states at once, rather than having a separate controller for each state.
 
-- State Machine - I implemented a state machine to manage the user's status, transitioning between pending, processing, processed, and failed. I consider this a best practice because it provides a clear and structured way to handle complex state transitions, ensuring that the system's logic remains consistent and predictable, especially when dealing with asynchronous operations and multiple state changes.
+- **Active Job** - I used Active Job to handle the asynchronous scraping of profiles. One improvement would be to integrate Sidekiq and Redis, which would provide a more robust solution with features like retries and better job management. Sidekiq is more robust because it offers enhanced performance, better concurrency handling, and a built-in retry mechanism, making it ideal for production environments where reliability and efficiency are critical.
 
-# URL Shortening
+- **State Machine** - I implemented a state machine to manage the user's status, transitioning between pending, processing, processed, and failed. I consider this a best practice because it provides a clear and structured way to handle complex state transitions, ensuring that the system's logic remains consistent and predictable, especially when dealing with asynchronous operations and multiple state changes.
+
+## URL Shortening
 
 I implemented a secure URL shortening solution where the GitHub URL is stored in the database using PostgreSQL's encryption feature. PostgreSQL's encrypt feature allows sensitive data, like URLs, to be securely stored in the database by encrypting it, which adds a layer of protection against unauthorized access. This ensures that even if the database is compromised, the actual URLs remain hidden and secure.
 
