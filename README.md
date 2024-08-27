@@ -38,7 +38,7 @@ bundle install
 
 Edit the `config/database.yml` file.
 
-Replace the `database_username`, `database_password` and `host` with your actual PostgreSQL credentials.
+Replace the `POSTGRES_USER`, `POSTGRES_PASSWORD` and the `DB_HOST` with your actual PostgreSQL credentials.
 
 **5. Create the Database**
 
