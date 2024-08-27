@@ -95,3 +95,27 @@ bin/dev
 ```
 
 Once the server is running, access the site at [localhost:3000](http://localhost:3000).
+
+# Key Technologies Used:
+
+- Tailwind CSS - I utilized Tailwind CSS for the project's styling, as it offers a quick and efficient way to create modern and responsive layouts.
+
+- Stimulus - I created a Stimulus controller to manage the CSS classes for the different processing states, such as processing, processed, etc. I believe this is a better solution than using decorators, as Stimulus is built into Rails and integrates seamlessly with the framework. A potential improvement here would be to have the controller manage all states at once, rather than having a separate controller for each state.
+
+- Active Job - I used Active Job to handle the asynchronous scraping of profiles. One improvement would be to integrate Sidekiq and Redis, which would provide a more robust solution with features like retries and better job management. Sidekiq is more robust because it offers enhanced performance, better concurrency handling, and a built-in retry mechanism, making it ideal for production environments where reliability and efficiency are critical.
+
+- State Machine - I implemented a state machine to manage the user's status, transitioning between pending, processing, processed, and failed. I consider this a best practice because it provides a clear and structured way to handle complex state transitions, ensuring that the system's logic remains consistent and predictable, especially when dealing with asynchronous operations and multiple state changes.
+
+# URL Shortening
+
+I implemented a secure URL shortening solution where the GitHub URL is stored in the database using PostgreSQL's encryption feature. PostgreSQL's encrypt feature allows sensitive data, like URLs, to be securely stored in the database by encrypting it, which adds a layer of protection against unauthorized access. This ensures that even if the database is compromised, the actual URLs remain hidden and secure.
+
+To manage the shortened URLs, I created a ShortCode module. The approach involves generating a unique identifier for each user that differs from the standard id field in the database. This unique identifier is created using a stored generated column in PostgreSQL:
+
+```ruby
+add_column :users, :unique_identifier, :bigint, as: "('1' || LPAD(id::varchar, 5, '0') || '0')::bigint", stored: true
+```
+
+This unique identifier is then encoded using the `ShortCode` module, which converts it into a shorter, alphanumeric string that is displayed to users as the shortened URL. When someone clicks on this shortened URL, the application decodes it back to the unique identifier, finds the corresponding user in the database, and redirects to their GitHub URL, which is securely stored in its encrypted form. This entire process occurs in the `ShortLinksController`.
+
+This approach not only ensures the security of the original URLs but also provides a user-friendly way to share links with a shorter and more manageable format. The use of unique identifiers and encoding adds an additional layer of abstraction, making the system both secure and efficient.
