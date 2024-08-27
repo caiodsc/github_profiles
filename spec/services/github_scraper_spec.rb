@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-# spec/services/github_scraper_spec.rb
-
 require 'rails_helper'
-require 'vcr'
 
 RSpec.describe GithubScraper do
   let(:github_url) { 'https://github.com/matz' }
