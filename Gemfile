@@ -75,7 +75,9 @@ group :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 6.4'
   gem 'simplecov', require: false
+  gem 'vcr', '~> 6.3'
+  gem 'webmock', '~> 3.23'
 end
 
-gem 'http', '~> 5.2'
+gem 'httparty', '~> 0.22.0'
 gem 'state_machines-activerecord', '~> 0.9.0'
