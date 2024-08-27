@@ -47,32 +47,28 @@ RSpec.describe User, type: :model do
 
   describe 'methods' do
     describe 'start_processing!' do
-      subject { create(:user, skip_callbacks: true) }
+      let(:user) { create(:user, skip_callbacks: true) }
+      subject(:start_processing!) { user.start_processing! }
+
+      it { expect { start_processing! }.to have_enqueued_job(GithubScraperJob).with(user.id) }
 
       it {
-        expect(GithubScraperJob).to receive(:perform_later).with(subject.id)
-        subject.start_processing!
-      }
-
-      it {
-        expect { subject.start_processing! }.to change { subject.state }
-          .from('pending')
-          .to('processing')
+        expect { start_processing! }.to change(user, :state_name)
+          .from(User::PENDING_STATE)
+          .to(User::PROCESSING_STATE)
       }
     end
 
     describe 'reprocess!' do
-      subject { create(:user, :processed, skip_callbacks: true) }
+      let(:user) { create(:user, :processed, skip_callbacks: true) }
+      subject(:reprocess!) { user.reprocess! }
+
+      it { expect { reprocess! }.to have_enqueued_job(GithubScraperJob).with(user.id) }
 
       it {
-        expect(GithubScraperJob).to receive(:perform_later).with(subject.id)
-        subject.reprocess
-      }
-
-      it {
-        expect { subject.reprocess! }.to change { subject.state }
-          .from('completed')
-          .to('processing')
+        expect { reprocess! }.to change(user, :state_name)
+          .from(User::COMPLETED_STATE)
+          .to(User::PROCESSING_STATE)
       }
     end
   end
