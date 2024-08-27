@@ -80,4 +80,5 @@ group :test do
 end
 
 gem 'httparty', '~> 0.22.0'
+gem 'net-pop', github: 'ruby/net-pop'
 gem 'state_machines-activerecord', '~> 0.9.0'
