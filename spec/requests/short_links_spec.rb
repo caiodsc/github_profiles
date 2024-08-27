@@ -24,7 +24,7 @@ RSpec.describe 'ShortLinks', type: :request do
     end
 
     context 'non existent short code' do
-      subject(:make_request) { get short_link_path('nonexistent') }
+      let(:short_id) { 'nonexistent' }
 
       it 'returns a 404 status code' do
         make_request
