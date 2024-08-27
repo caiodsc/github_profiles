@@ -62,6 +62,20 @@ Execute the test suite with RSpec:
 rspec
 ```
 
+After running your tests, open coverage/index.html in the browser of your choice. For example, in a Mac terminal, run the following command from your application's root directory:
+
+```bash
+open coverage/index.html
+```
+
+In a Debian/Ubuntu terminal:
+
+```bash
+xdg-open coverage/index.html
+```
+
+
+
 ## Running RuboCop
 
 Run RuboCop to check for code quality and style issues:
