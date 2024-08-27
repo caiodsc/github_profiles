@@ -62,7 +62,7 @@ Execute the test suite with RSpec:
 rspec
 ```
 
-After running your tests, open coverage/index.html in the browser of your choice. For example, in a Mac terminal, run the following command from your application's root directory:
+After running your tests, open `coverage/index.html` in the browser of your choice. For example, in a Mac terminal, run the following command from your application's root directory:
 
 ```bash
 open coverage/index.html
@@ -73,7 +73,9 @@ In a Debian/Ubuntu terminal:
 ```bash
 xdg-open coverage/index.html
 ```
+Results:
 
+![Captura de tela de 2024-08-26 23-19-07](https://github.com/user-attachments/assets/43a83b7e-1ccc-48e0-9684-1fa839b98935)
 
 
 ## Running RuboCop
