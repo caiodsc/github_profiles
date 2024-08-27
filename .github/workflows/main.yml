@@ -20,7 +20,9 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
-    
+
+    env:
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     steps:
       - uses: actions/checkout@v2
 
