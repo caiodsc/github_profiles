@@ -36,6 +36,10 @@ jobs:
         run: |
           bundle exec rails db:create db:schema:load
 
+      - name: Compile assets
+        run: |
+          bundle exec rake assets:precompile
+
       - name: Run RuboCop
         run: bundle exec rubocop
 
