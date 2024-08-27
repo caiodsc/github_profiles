@@ -124,3 +124,9 @@ add_column :users, :unique_identifier, :bigint, as: "('1' || LPAD(id::varchar, 5
 This unique identifier is then encoded using the `ShortCode` module, which converts it into a shorter, alphanumeric string that is displayed to users as the shortened URL. When someone clicks on this shortened URL, the application decodes it back to the unique identifier, finds the corresponding user in the database, and redirects to their GitHub URL, which is securely stored in its encrypted form. This entire process occurs in the `ShortLinksController`.
 
 This approach not only ensures the security of the original URLs but also provides a user-friendly way to share links with a shorter and more manageable format. The use of unique identifiers and encoding adds an additional layer of abstraction, making the system both secure and efficient.
+
+## Future Enhancements
+
+### Adding Authentication Layer with Devise
+
+To further enhance the security and functionality of the URL shortening system, I would recommend implementing a user authentication layer using Devise. Devise is a flexible authentication solution for Rails applications, providing a range of features to manage user accounts securely.
