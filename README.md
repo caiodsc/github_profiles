@@ -59,7 +59,7 @@ rails db:schema:load
 Execute the test suite with RSpec:
 
 ```bash
-rspec
+bundle exec rspec
 ```
 
 After running your tests, open `coverage/index.html` in the browser of your choice. For example, in a Mac terminal, run the following command from your application's root directory:
